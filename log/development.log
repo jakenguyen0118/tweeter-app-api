@@ -26,3 +26,24 @@ Migrating to CreateTweets (20201110221838)
   [1m[36mTweet Create (0.3ms)[0m  [1m[32mINSERT INTO "tweets" ("title", "content", "author") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "I'm walkin' here"], ["content", "Hey, I'm walkin' here!"], ["author", "Nicky62"]]
   [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
   [1m[36mTweet Load (0.9ms)[0m  [1m[34mSELECT "tweets".* FROM "tweets"[0m
+Started POST "/tweets" for ::1 at 2020-11-10 17:45:40 -0500
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TweetsController#create as */*
+  Parameters: {"title"=>"test", "content"=>"test", "author"=>"test", "tweet"=>{"title"=>"test", "content"=>"test", "author"=>"test"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tweets_controller.rb:15:in `create'
+  [1m[36mTweet Create (0.9ms)[0m  [1m[32mINSERT INTO "tweets" ("title", "content", "author") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "test"], ["content", "test"], ["author", "test"]]
+  ↳ app/controllers/tweets_controller.rb:15:in `create'
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tweets_controller.rb:15:in `create'
+Completed 200 OK in 14ms (Views: 0.3ms | ActiveRecord: 8.0ms | Allocations: 4641)
+
+
+Started GET "/tweets" for ::1 at 2020-11-10 17:45:43 -0500
+Processing by TweetsController#index as */*
+  Parameters: {"username"=>"jakenguyen", "password"=>"[FILTERED]", "tweet"=>{}}
+  [1m[36mTweet Load (0.5ms)[0m  [1m[34mSELECT "tweets".* FROM "tweets"[0m
+  ↳ app/controllers/tweets_controller.rb:4:in `index'
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.5ms | Allocations: 1164)
+
+
